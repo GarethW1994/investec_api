@@ -18,6 +18,7 @@
     "express": "^4.16.1",
     "express-session": "^1.15.6",
     "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
     "reflect-metadata": "^0.1.10",
     "typeorm": "0.1.0-alpha.50",
     "typescript": "^2.5.3"
