@@ -11,10 +11,16 @@ import { ConnectionDB } from '../db-connection/Connection';
 
 export class AddingData {
   EntitiesConverter = () => {
-    let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/entities.csv";
+    let file = "../csv/entities.csv";
     const converter = new Converter();
 
     converter.fromFile(file, async (err, rawData) => {
+
+      if (err){
+        console.log(err)
+        return;
+      }
+
       const manager = getRepository(_Entity);
       let _EntityRepo: _Entity = new _Entity();
 
@@ -45,10 +51,16 @@ export class AddingData {
   }
 
   EntityRelationshipConverter = () => {
-    let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/entities.csv";
+    let file = "../csv/entities.csv";
     const converter = new Converter();
 
     converter.fromFile(file, (err, rawData) => {
+
+      if (err){
+        console.log(err)
+        return;
+      }
+
       const entityRelationshipRepo = getRepository(EntityRelationship);
       const _entityRepository = getRepository(_Entity);
 
@@ -89,11 +101,17 @@ export class AddingData {
   }
 
  FacilityConverter = () => {
-   let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/limits.csv";
+   let file = "../csv/limits.csv";
 
    const converter = new Converter();
 
    converter.fromFile(file, (err, rawData) => {
+     if (err){
+       console.log(err)
+       return;
+     }
+
+
       let facilityRepo = getRepository(Facility);
 
       let currentFacility: Facility;
@@ -128,11 +146,16 @@ export class AddingData {
  }
 
  LimitConverter = () => {
-   let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/limits.csv";
+   let file = "../csv/limits.csv";
 
    const converter = new Converter();
 
    converter.fromFile(file, (err, rawData) => {
+     if (err){
+       console.log(err)
+       return;
+     }
+
      const limitRepo = getRepository(Limits);
 
      let currentLimit: Limits;
@@ -165,12 +188,17 @@ export class AddingData {
  }
 
    LimitsConverter = () => {
-        let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/limits.csv";
-        let file2 = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/entities.csv";
+        let file = "../csv/limits.csv";
+        let file2 = "../csv/entities.csv";
 
       const converter = new Converter();
 
       converter.fromFile(file, (err, rawData) => {
+        if (err){
+          console.log(err)
+          return;
+        }
+
         const entityLimitRepo = getRepository(EntityLimit);
         const facilityRepo = getRepository(Facility);
         const _entityRepository = getRepository(_Entity);
