@@ -35,10 +35,10 @@ server.app.get("/api/parent_entity", AppRoutes.getParentEntity);
 server.app.get("/api/child_entity/:id", AppRoutes.getChildEntity);
 server.app.get("/importCSV", (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     let addingData = new AddingData_1.AddingData();
-    // await addingData.EntitiesConverter();
-    // await addingData.EntityRelationshipConverter();
-    // await addingData.FacilityConverter();
-    // await addingData.LimitConverter();
+    yield addingData.EntitiesConverter();
+    yield addingData.EntityRelationshipConverter();
+    yield addingData.FacilityConverter();
+    yield addingData.LimitConverter();
     yield addingData.LimitsConverter();
     res.send("Success");
 }));

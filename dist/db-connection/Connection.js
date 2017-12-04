@@ -23,8 +23,8 @@ class ConnectionDB {
                 type: "mysql",
                 host: "localhost",
                 port: 3306,
-                username: "root",
-                password: "$G_Code1!",
+                username: "investec_user",
+                password: "Investec3!",
                 database: "investec_data",
                 synchronize: true,
                 entities: [EntityRelationship_1.EntityRelationship, Entity_1._Entity, EntityLimit_1.EntityLimit, Facility_1.Facility, Limits_1.Limits]
