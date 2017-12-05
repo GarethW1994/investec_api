@@ -10,8 +10,10 @@ import { Converter } from 'csvtojson';
 import { ConnectionDB } from '../db-connection/Connection';
 
 export class AddingData {
-  EntitiesConverter = () => {
-    let file = "../csv/entities.csv";
+  EntitiesConverter = (filePath: string) => {
+    let file = filePath;
+    console.log(file);
+
     const converter = new Converter();
 
     converter.fromFile(file, async (err, rawData) => {
@@ -24,11 +26,14 @@ export class AddingData {
       const manager = getRepository(_Entity);
       let _EntityRepo: _Entity = new _Entity();
 
+
       rawData.forEach(async (data) => {
         let entity = new _Entity();
 
           entity.entityId = data["Parent Entity Id"];
           entity.entityName = data["Parent Entity Name"];
+
+          console.log(entity.entityId);
 
         manager
           .save(entity)
@@ -50,8 +55,8 @@ export class AddingData {
     });
   }
 
-  EntityRelationshipConverter = () => {
-    let file = "../csv/entities.csv";
+  EntityRelationshipConverter = (filePath: string) => {
+    let file = filePath;
     const converter = new Converter();
 
     converter.fromFile(file, (err, rawData) => {
@@ -100,8 +105,8 @@ export class AddingData {
     })
   }
 
- FacilityConverter = () => {
-   let file = "../csv/limits.csv";
+ FacilityConverter = (filePath: string) => {
+   let file = filePath;
 
    const converter = new Converter();
 
@@ -145,8 +150,8 @@ export class AddingData {
    });
  }
 
- LimitConverter = () => {
-   let file = "../csv/limits.csv";
+ LimitConverter = (filePath: string) => {
+   let file = filePath;
 
    const converter = new Converter();
 
@@ -187,9 +192,9 @@ export class AddingData {
    });
  }
 
-   LimitsConverter = () => {
-        let file = "../csv/limits.csv";
-        let file2 = "../csv/entities.csv";
+   LimitsConverter = (filePathEntity, filePathLimit) => {
+        let file = filePathLimit;
+        let file2 = filePathLimit;
 
       const converter = new Converter();
 

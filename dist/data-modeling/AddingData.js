@@ -18,8 +18,9 @@ const typeorm_1 = require("typeorm");
 const csvtojson_1 = require("csvtojson");
 class AddingData {
     constructor() {
-        this.EntitiesConverter = () => {
-            let file = "../csv/entities.csv";
+        this.EntitiesConverter = (filePath) => {
+            let file = filePath;
+            console.log(file);
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => __awaiter(this, void 0, void 0, function* () {
                 if (err) {
@@ -32,6 +33,7 @@ class AddingData {
                     let entity = new Entity_1._Entity();
                     entity.entityId = data["Parent Entity Id"];
                     entity.entityName = data["Parent Entity Name"];
+                    console.log(entity.entityId);
                     manager
                         .save(entity)
                         .then(entity => console.log('Parent Entities Saved!'))
@@ -48,8 +50,8 @@ class AddingData {
                 }));
             }));
         };
-        this.EntityRelationshipConverter = () => {
-            let file = "../csv/entities.csv";
+        this.EntityRelationshipConverter = (filePath) => {
+            let file = filePath;
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
                 if (err) {
@@ -85,8 +87,8 @@ class AddingData {
                 }));
             });
         };
-        this.FacilityConverter = () => {
-            let file = "../csv/limits.csv";
+        this.FacilityConverter = (filePath) => {
+            let file = filePath;
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
                 if (err) {
@@ -119,8 +121,8 @@ class AddingData {
                 }));
             });
         };
-        this.LimitConverter = () => {
-            let file = "../csv/limits.csv";
+        this.LimitConverter = (filePath) => {
+            let file = filePath;
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
                 if (err) {
@@ -150,9 +152,9 @@ class AddingData {
                 }));
             });
         };
-        this.LimitsConverter = () => {
-            let file = "../csv/limits.csv";
-            let file2 = "../csv/entities.csv";
+        this.LimitsConverter = (filePathEntity, filePathLimit) => {
+            let file = filePathLimit;
+            let file2 = filePathLimit;
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
                 if (err) {

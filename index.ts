@@ -1,8 +1,14 @@
 import { Server } from "./server/Server";
 import { Routes } from "./routes/Routes";
 
+import { DataImport } from './import-data';
+
+var data_import = new DataImport();
+
+data_import.dataImport();
+
 // DataModeling
-import { AddingData } from "./data-modeling/AddingData";
+// import { AddingData } from "./data-modeling/AddingData";
 
 // typeorm
 import { Entity, getManager, getRepository, Connection } from 'typeorm';
@@ -35,13 +41,5 @@ server.app.get("/api/parent_entity", AppRoutes.getParentEntity);
 server.app.get("/api/child_entity/:id", AppRoutes.getChildEntity);
 
 server.app.get("/importCSV", async (req: Request, res: Response, next: NextFunction) => {
-  let addingData = new AddingData();
 
-    await addingData.EntitiesConverter();
-    await addingData.EntityRelationshipConverter();
-    await addingData.FacilityConverter();
-    await addingData.LimitConverter();
-    await addingData.LimitsConverter();
-
-     res.send("Success");
 });

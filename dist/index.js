@@ -10,8 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const Server_1 = require("./server/Server");
 const Routes_1 = require("./routes/Routes");
-// DataModeling
-const AddingData_1 = require("./data-modeling/AddingData");
+const import_data_1 = require("./import-data");
+var data_import = new import_data_1.DataImport();
+data_import.dataImport();
 // classes instance
 var AppRoutes = new Routes_1.Routes();
 // server instance
@@ -34,11 +35,4 @@ server.app.get("/api/entity_relationship", AppRoutes.getRelationship);
 server.app.get("/api/parent_entity", AppRoutes.getParentEntity);
 server.app.get("/api/child_entity/:id", AppRoutes.getChildEntity);
 server.app.get("/importCSV", (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    let addingData = new AddingData_1.AddingData();
-    yield addingData.EntitiesConverter();
-    yield addingData.EntityRelationshipConverter();
-    yield addingData.FacilityConverter();
-    yield addingData.LimitConverter();
-    yield addingData.LimitsConverter();
-    res.send("Success");
 }));
