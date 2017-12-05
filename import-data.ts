@@ -12,9 +12,9 @@ console.log(fileEntities);
 
 async function dataImport() {
     await addingData.EntityRelationshipConverter(fileEntities);
-    await addingData.FacilityConverter(fileLimits);
-    await addingData.LimitConverter(fileLimits);
-    await addingData.LimitsConverter(fileEntities, fileLimits);
+    // await addingData.FacilityConverter(fileLimits);
+    // await addingData.LimitConverter(fileLimits);
+    // await addingData.LimitsConverter(fileEntities, fileLimits);
 }
 
 (async function(){
