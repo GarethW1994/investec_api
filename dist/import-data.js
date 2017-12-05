@@ -16,10 +16,11 @@ const Connection_1 = require("./db-connection/Connection");
 console.log(fileEntities);
 function dataImport() {
     return __awaiter(this, void 0, void 0, function* () {
+        yield addingData.EntitiesConverter(fileEntities);
         yield addingData.EntityRelationshipConverter(fileEntities);
-        // await addingData.FacilityConverter(fileLimits);
-        // await addingData.LimitConverter(fileLimits);
-        // await addingData.LimitsConverter(fileEntities, fileLimits);
+        yield addingData.FacilityConverter(fileLimits);
+        yield addingData.LimitConverter(fileLimits);
+        yield addingData.LimitsConverter(fileEntities, fileLimits);
     });
 }
 (function () {
