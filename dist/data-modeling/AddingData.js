@@ -20,7 +20,6 @@ class AddingData {
     constructor() {
         this.EntitiesConverter = (filePath) => {
             let file = filePath;
-            console.log(file);
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => __awaiter(this, void 0, void 0, function* () {
                 if (err) {

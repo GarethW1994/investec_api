@@ -10,21 +10,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const AddingData_1 = require("./data-modeling/AddingData");
 let addingData = new AddingData_1.AddingData();
-let fileEntities = './csv/entities.csv';
-let fileLimits = './csv/limits.csv';
+let fileEntities = process.argv[2] || './csv/entities.csv';
+let fileLimits = process.argv[3] || './csv/limits.csv';
+const Connection_1 = require("./db-connection/Connection");
 console.log(fileEntities);
-class DataImport {
-    constructor() {
-    }
-    dataImport() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield addingData.EntityRelationshipConverter(fileEntities);
-            yield addingData.FacilityConverter(fileLimits);
-            yield addingData.LimitConverter(fileLimits);
-            yield addingData.LimitsConverter(fileEntities, fileLimits);
-        });
-    }
+function dataImport() {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield addingData.EntityRelationshipConverter(fileEntities);
+        yield addingData.FacilityConverter(fileLimits);
+        yield addingData.LimitConverter(fileLimits);
+        yield addingData.LimitsConverter(fileEntities, fileLimits);
+    });
 }
-exports.DataImport = DataImport;
-// const dataImport = async function() {
-// }
+(function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const connectionDB = new Connection_1.ConnectionDB();
+        const dbCon = connectionDB.connectToDb();
+        dbCon.then((connection) => __awaiter(this, void 0, void 0, function* () {
+            console.log('connected to DB');
+            //return await connection;
+            yield dataImport();
+            console.log("Done importing data!");
+        }))
+            .catch(Error => {
+            console.log(Error);
+        });
+    });
+})();

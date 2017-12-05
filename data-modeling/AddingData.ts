@@ -12,7 +12,6 @@ import { ConnectionDB } from '../db-connection/Connection';
 export class AddingData {
   EntitiesConverter = (filePath: string) => {
     let file = filePath;
-    console.log(file);
 
     const converter = new Converter();
 

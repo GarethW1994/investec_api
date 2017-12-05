@@ -1,11 +1,11 @@
 import { Server } from "./server/Server";
 import { Routes } from "./routes/Routes";
 
-import { DataImport } from './import-data';
+//import { DataImport } from './import-data';
 
-var data_import = new DataImport();
+//var data_import = new DataImport();
 
-data_import.dataImport();
+//data_import.dataImport();
 
 // DataModeling
 // import { AddingData } from "./data-modeling/AddingData";

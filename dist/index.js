@@ -10,9 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const Server_1 = require("./server/Server");
 const Routes_1 = require("./routes/Routes");
-const import_data_1 = require("./import-data");
-var data_import = new import_data_1.DataImport();
-data_import.dataImport();
 // classes instance
 var AppRoutes = new Routes_1.Routes();
 // server instance
