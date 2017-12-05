@@ -17,9 +17,9 @@ console.log(fileEntities);
 function dataImport() {
     return __awaiter(this, void 0, void 0, function* () {
         yield addingData.EntityRelationshipConverter(fileEntities);
-        yield addingData.FacilityConverter(fileLimits);
-        yield addingData.LimitConverter(fileLimits);
-        yield addingData.LimitsConverter(fileEntities, fileLimits);
+        // await addingData.FacilityConverter(fileLimits);
+        // await addingData.LimitConverter(fileLimits);
+        // await addingData.LimitsConverter(fileEntities, fileLimits);
     });
 }
 (function () {
