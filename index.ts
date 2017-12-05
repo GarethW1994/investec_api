@@ -12,7 +12,7 @@ import { Request, Response, NextFunction } from 'express';
 var AppRoutes = new Routes();
 
 // server instance
-var server = new Server(3000);
+var server = new Server(5000);
 
 //Grant access to the resources to web browers
 //specify what they can and can't do

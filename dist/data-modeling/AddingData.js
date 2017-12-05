@@ -19,9 +19,13 @@ const csvtojson_1 = require("csvtojson");
 class AddingData {
     constructor() {
         this.EntitiesConverter = () => {
-            let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/entities.csv";
+            let file = "../csv/entities.csv";
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => __awaiter(this, void 0, void 0, function* () {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
                 const manager = typeorm_1.getRepository(Entity_1._Entity);
                 let _EntityRepo = new Entity_1._Entity();
                 rawData.forEach((data) => __awaiter(this, void 0, void 0, function* () {
@@ -45,9 +49,13 @@ class AddingData {
             }));
         };
         this.EntityRelationshipConverter = () => {
-            let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/entities.csv";
+            let file = "../csv/entities.csv";
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
                 const entityRelationshipRepo = typeorm_1.getRepository(EntityRelationship_1.EntityRelationship);
                 const _entityRepository = typeorm_1.getRepository(Entity_1._Entity);
                 let currentEntity;
@@ -78,9 +86,13 @@ class AddingData {
             });
         };
         this.FacilityConverter = () => {
-            let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/limits.csv";
+            let file = "../csv/limits.csv";
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
                 let facilityRepo = typeorm_1.getRepository(Facility_1.Facility);
                 let currentFacility;
                 facilityRepo.query("DELETE FROM facility");
@@ -108,9 +120,13 @@ class AddingData {
             });
         };
         this.LimitConverter = () => {
-            let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/limits.csv";
+            let file = "../csv/limits.csv";
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
                 const limitRepo = typeorm_1.getRepository(Limits_1.Limits);
                 let currentLimit;
                 limitRepo.query("DELETE FROM limits");
@@ -135,10 +151,14 @@ class AddingData {
             });
         };
         this.LimitsConverter = () => {
-            let file = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/limits.csv";
-            let file2 = "/home/bootcamp/projects/Investect-BC/investec-app/API/csv/entities.csv";
+            let file = "../csv/limits.csv";
+            let file2 = "../csv/entities.csv";
             const converter = new csvtojson_1.Converter();
             converter.fromFile(file, (err, rawData) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
                 const entityLimitRepo = typeorm_1.getRepository(EntityLimit_1.EntityLimit);
                 const facilityRepo = typeorm_1.getRepository(Facility_1.Facility);
                 const _entityRepository = typeorm_1.getRepository(Entity_1._Entity);

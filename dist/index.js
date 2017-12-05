@@ -15,7 +15,7 @@ const AddingData_1 = require("./data-modeling/AddingData");
 // classes instance
 var AppRoutes = new Routes_1.Routes();
 // server instance
-var server = new Server_1.Server(3000);
+var server = new Server_1.Server(5000);
 //Grant access to the resources to web browers
 //specify what they can and can't do
 server.app.use(function (req, res, next) {
